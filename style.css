@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
 html {
-    background: rgba(234, 233, 233, 0.795) url(cole.jpg);
+    background: rgba(234, 233, 233, 0.795);
     background-repeat: no-repeat;
     background-size: 30%;
     font-family: 'helvetica neue';
@@ -18,7 +19,7 @@ html {
           margin: 5px;
           font-size: 2.5rem;
           font-family: 'consolas';
-      }
+}
   .clock {
     width: 30rem;
     height: 30rem;
@@ -64,4 +65,12 @@ html {
   .second-hand{
     height: 2px;
     background: silver;
+  }
+
+  .quote{
+    margin-top: 10px;
+    padding: 10px;
+    color: black;
+    font-size: 1.7rem;
+    font-family: 'Grape Nuts';
   }

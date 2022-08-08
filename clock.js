@@ -1,6 +1,15 @@
 const secondHand = document.querySelector('.second-hand');
 const minsHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
+const quoteText = document.getElementById('quote-text');
+const quoteAuthor = document.getElementById('quote-author');
+
+
+function dispDate(){
+  a = new Date();
+  date = a.toLocaleDateString(undefined, { weekday: 'long' , day: 'numeric', month: 'long', year: 'numeric'});
+  document.getElementById('time').innerHTML = date;
+}
 
 function setDate() {
   const now = new Date();
@@ -18,11 +27,22 @@ function setDate() {
   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 }
 
-setInterval(setDate, 1000);
+
+function dispQuote()
+{
+  fetch('https://quotable.io/random?tags=time|life&maxLength=140')
+       .then(response => response.json())
+       .then(data =>{
+        quoteText.textContent = data.content;
+        quoteAuthor.textContent = `--${data.author}`;
+       });
+}
 
 setDate();
-setInterval(() => {
-      a = new Date();
-      date = a.toLocaleDateString(undefined, { weekday: 'long' , day: 'numeric', month: 'long', year: 'numeric'});
-      document.getElementById('time').innerHTML = date;
-       }, 1000);
+setInterval(setDate, 1000);
+
+dispDate();
+setInterval(dispDate, 3600000);
+
+dispQuote();
+setInterval(dispQuote, 60000);
